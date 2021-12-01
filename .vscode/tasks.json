@@ -1,0 +1,38 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    //
+    // See https://code.visualstudio.com/docs/editor/variables-reference
+    // for the Variables Reference
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "nim: run",
+            "command": "nim",
+            "args": ["c", "-o:bin/${fileBasenameNoExtension}", "-r", "${workspaceFolder}/${relativeFile}"],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "nim: debug",
+            "command": "nim",
+            "args": [
+                "compile",
+                "-g",
+                "--debugger:native",
+                "-o:bin/${fileBasenameNoExtension}",
+                "${workspaceFolder}/${relativeFile}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "type": "shell",
+        }
+    ]
+}
